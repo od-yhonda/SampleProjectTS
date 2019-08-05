@@ -11,6 +11,8 @@ import {
   StatusBar
 } from "react-native";
 
+import { Button } from "react-native-elements";
+
 export default class SampleComponent extends Component {
   render() {
     return (
@@ -38,25 +40,26 @@ export default class SampleComponent extends Component {
               <Text style={styles.sectionHeader}>{section.title}</Text>
             )}
             // renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-            renderItem={({ item }) => (
-              <FlatList
-                data={[
-                  { key: { item } },
-                  { key: "Jackson" },
-                  { key: "J" },
-                  { key: "James" },
-                  { key: "Joel" }
-                ]}
-                renderItem={({ item }) => (
-                  <View style={styles.item}>
-                    <Text style={styles.item}>{item.key}</Text>
-                  </View>
-                )}
-                // horizontal={true}
-                // numColumns={5}
-                //   contentContainerStyle={styles.list}
-              />
-            )}
+            renderItem={({ item }) => <Button title={item} />}
+            // renderItem={({ item }) => (
+            //   <FlatList
+            //     data={[
+            //       { key: { item } },
+            //       { key: "Jackson" },
+            //       { key: "J" },
+            //       { key: "James" },
+            //       { key: "Joel" }
+            //     ]}
+            //     renderItem={({ item }) => (
+            //       <View style={styles.item}>
+            //         <Text style={styles.item}>{item.key}</Text>
+            //       </View>
+            //     )}
+            //     // horizontal={true}
+            //     // numColumns={5}
+            //     //   contentContainerStyle={styles.list}
+            //   />
+            // )}
           />
         </SafeAreaView>
       </View>
