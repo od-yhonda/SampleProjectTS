@@ -7,16 +7,26 @@ import {
   StyleSheet
 } from "react-native";
 
-export default class TodoInput extends React.Component {
-  constructor(props) {
+interface TodoInputProps {
+  onPress: (text: string) => void;
+}
+
+interface State {
+  text: string;
+}
+
+export default class TodoInput extends React.Component<TodoInputProps, State> {
+  constructor(props: TodoInputProps) {
     super(props);
 
-    this.ref = {};
+    this.state = {
+      text: ""
+    };
   }
 
   onPress = () => {
-    this.props.onPress(this.ref._lastNativeText);
-    this.ref.setNativeProps({ text: "" });
+    this.props.onPress(this.state.text);
+    this.setState({ text: "" });
   };
 
   render() {
@@ -26,9 +36,8 @@ export default class TodoInput extends React.Component {
       <View style={styles.container}>
         <TextInput
           style={styles.textInput}
-          ref={ref => {
-            this.ref = ref;
-          }}
+          onChangeText={text => this.setState({ text })}
+          // value={this.state.text}
         />
         <TouchableOpacity style={styles.button} onPress={this.onPress}>
           <Text style={styles.buttonText}>追加</Text>

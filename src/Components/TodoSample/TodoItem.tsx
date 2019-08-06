@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Button from "../Button";
+import TodoButton from "./TodoButton";
 
 interface TodoItemProps {
   text: String;
-  onDone: Event;
-  onDelete: Event;
-  done: Event;
+  onDone: (index: number) => void;
+  onDelete: (index: number) => void;
+  done: boolean;
 }
 
 const TodoItem = (props: TodoItemProps) => {
@@ -15,12 +15,12 @@ const TodoItem = (props: TodoItemProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.left}>
-        <Button onPress={onDone}>{done ? "Undo" : "Done"}</Button>
+        <TodoButton onPress={onDone}>{done ? "Undo" : "Done"}</TodoButton>
         <Text style={[styles.text, done && styles.doneText]}>{text}</Text>
       </View>
-      <Button style={styles.deleteButton} onPress={onDelete}>
+      <TodoButton style={styles.deleteButton} onPress={onDelete}>
         Delete
-      </Button>
+      </TodoButton>
     </View>
   );
 };

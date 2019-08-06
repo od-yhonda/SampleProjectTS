@@ -7,17 +7,8 @@
  */
 
 import React, { Fragment } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar
-} from "react-native";
-
+import { SafeAreaView, StatusBar } from "react-native";
 import { createAppContainer } from "react-navigation";
-
 import AppNavigator from "./AppNavigator";
 
 const AppContainer = createAppContainer(AppNavigator);
@@ -28,15 +19,11 @@ class App extends React.Component {
       <Fragment>
         <SafeAreaView>
           <StatusBar barStyle="dark-content" />
-          <View>
-            <AppContainer />
-          </View>
+          <AppContainer />
         </SafeAreaView>
       </Fragment>
     );
   }
 }
-
-const style = StyleSheet.create({});
 
 export default App;

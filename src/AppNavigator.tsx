@@ -1,12 +1,14 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation";
 
-import App from "./App";
+import Home from "./components/Home";
 import SampleComponent from "./components/SampleComponent";
+import TodoSample from "./components/TodoSample/TodoSample";
 
 const AppNavigator = createStackNavigator(
   {
-    Home: App,
-    SampleComponent: SampleComponent
+    Home: Home,
+    SampleComponent: SampleComponent,
+    TodoSample: TodoSample
   },
   {
     initialRouteName: "Home"

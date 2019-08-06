@@ -7,16 +7,29 @@ import { StyleSheet, View, FlatList } from "react-native";
 import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
 
-class TodoSample extends React.Component {
-  constructor(props) {
+interface Props {}
+
+interface Todo {
+  key: string;
+  text: string;
+  done: boolean;
+}
+
+interface State {
+  list: Todo[];
+}
+
+class TodoSample extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       list: []
     };
   }
 
-  delete = index => () => {
-    const list = [].concat(this.state.list);
+  delete = (index: number) => () => {
+    const todoList: Todo[] = [];
+    const list = todoList.concat(this.state.list);
     list.splice(index, 1);
 
     this.setState({
@@ -24,8 +37,9 @@ class TodoSample extends React.Component {
     });
   };
 
-  done = index => () => {
-    const list = [].concat(this.state.list);
+  done = (index: number) => () => {
+    const todoList: Todo[] = [];
+    const list = todoList.concat(this.state.list);
     list[index].done = !list[index].done;
 
     this.setState({
@@ -33,9 +47,10 @@ class TodoSample extends React.Component {
     });
   };
 
-  onPress = text => {
+  onPress = (text: string) => {
     console.log(text);
-    const list = [].concat(this.state.list);
+    const todoList: Todo[] = [];
+    const list = todoList.concat(this.state.list);
 
     list.push({
       key: Date(),
